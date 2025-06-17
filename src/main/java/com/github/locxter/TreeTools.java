@@ -13,8 +13,7 @@ public class TreeTools {
     * @return Hoehe des Baumes
     */
     public static int treeHeight(Tree b) {
-        // TODO
-
+        // TODO Recursive approach
     }
 
     /**
@@ -23,7 +22,7 @@ public class TreeTools {
     * @return Anzahl der Knoten des Baumes
     */
     public static int anzahlKnoten(Tree b) {
-        // TODO
+        // TODO Recursive approach
         
     }  
 
