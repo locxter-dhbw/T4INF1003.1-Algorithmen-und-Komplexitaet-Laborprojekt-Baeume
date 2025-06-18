@@ -53,6 +53,56 @@ public class TreeToolsTest {
             StdOut.print(arr[i]);
 
         StdOut.println();
+
+
+
+        //----------------------------------------------
+        //Aufgabe b)
+
+        // Einlesen der Anzahl Suchbaeume und Knoten durch User
+
+        StdOut.println("Bitte gewuenschte Anzahl Knoten pro Baum eingeben");
+        int numberOfNodesPerTree = StdIn.readInt();
+
+        StdOut.println("Bitte gewuenschte Anzahl Baeume eingeben");
+        int numberOfRandomTrees = StdIn.readInt();
+
+        StdOut.println("Erzeuge " + numberOfRandomTrees + " Suchbaeume mit je " + numberOfNodesPerTree + " Knoten");
+
+
+        //Gesamthöhe der Baeume bestimmen
+
+        int collectiveHeight = 0;
+
+        //Baueme mit Zufälligen Werten erstellen
+
+        for (int i = 1; i <= numberOfRandomTrees; i++) {
+
+            // Zufällige Zahlen erzeugen
+            int[] values = new int[numberOfNodesPerTree];
+            for (int j = 0; j < numberOfNodesPerTree; j++) {
+                values[j] = j;
+            }
+            // Zahlen zufällig anordnen
+            StdRandom.shuffle(values);
+
+            // Erstelle Suchbaum mit diesen Werten
+            SearchTree tree = new SearchTree();
+            for (int val : values) {
+                tree.insert(val);
+            }
+
+            // Höhe des aktuellen Baums bestimmen
+            int height = TreeTools.treeHeight(tree);
+            collectiveHeight += height;
+            StdOut.println("Hoehe Suchbaum " + i + ": " + height);
+        }
+
+        // Durchschnitt berechnen
+        double averageHeight = (double) collectiveHeight / numberOfRandomTrees;
+        double c = averageHeight / (Math.log(numberOfNodesPerTree) / Math.log(2));
+
+        StdOut.printf("Durchschnittliche Hoehe: %.2f (entspricht %.2f * log2(n))%n", averageHeight, c);
     }
 }
 
