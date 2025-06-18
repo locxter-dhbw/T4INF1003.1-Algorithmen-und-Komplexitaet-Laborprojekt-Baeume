@@ -1,13 +1,17 @@
 /******************************  TreeToolsTest.java  **************************/
 package com.github.locxter;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+
 /**
  * Test fuer die Klasse TreeTools
  */
 
 public class TreeToolsTest {
 
-    public static void main(String[] argv) {
+    public static void main(String[] argv) throws IOException {
 
         // Erzeuge einen Test-Baum
         LinkedTree a = new LinkedTree(new Character('A'));
@@ -60,7 +64,6 @@ public class TreeToolsTest {
         //Aufgabe b)
 
         // Einlesen der Anzahl Suchbaeume und Knoten durch User
-
         StdOut.println("Bitte gewuenschte Anzahl Knoten pro Baum eingeben");
         int numberOfNodesPerTree = StdIn.readInt();
 
@@ -70,12 +73,13 @@ public class TreeToolsTest {
         StdOut.println("Erzeuge " + numberOfRandomTrees + " Suchbaeume mit je " + numberOfNodesPerTree + " Knoten");
 
 
-        //Gesamthöhe der Baeume bestimmen
-
+        // Gesamthöhe der Baeume bestimmen
         int collectiveHeight = 0;
+    
+        // Output-String
+        StringBuilder output = new StringBuilder();
 
-        //Baueme mit Zufälligen Werten erstellen
-
+        // Baueme mit Zufälligen Werten erstellen
         for (int i = 1; i <= numberOfRandomTrees; i++) {
 
             // Zufällige Zahlen erzeugen
@@ -87,22 +91,29 @@ public class TreeToolsTest {
             StdRandom.shuffle(values);
 
             // Erstelle Suchbaum mit diesen Werten
+
             SearchTree tree = new SearchTree();
             for (int val : values) {
                 tree.insert(val);
             }
 
-            // Höhe des aktuellen Baums bestimmen
+            // Hoehe des aktuellen Baums bestimmen
             int height = TreeTools.treeHeight(tree);
             collectiveHeight += height;
-            StdOut.println("Hoehe Suchbaum " + i + ": " + height);
+            output.append("Hoehe Suchbaum ").append(i).append(": ").append(height).append("\n");
         }
 
         // Durchschnitt berechnen
         double averageHeight = (double) collectiveHeight / numberOfRandomTrees;
         double c = averageHeight / (Math.log(numberOfNodesPerTree) / Math.log(2));
 
-        StdOut.printf("Durchschnittliche Hoehe: %.2f (entspricht %.2f * log2(n))%n", averageHeight, c);
+        output.append(String.format("%nDurchschnittliche Hoehe: %.2f (entspricht %.2f * log2(n))", averageHeight, c));
+
+        // Output-String in Datei und StdOut schreiben
+        FileWriter writer = new FileWriter("Aufgabe_b_output.txt");
+        writer.write(output.toString());
+        writer.close();
+        StdOut.println(output);
     }
 }
 
