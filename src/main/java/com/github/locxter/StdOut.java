@@ -1,4 +1,5 @@
-package com.github.locxter; /******************************************************************************
+package com.github.locxter;
+/******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut
  *  Dependencies: none
