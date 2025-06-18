@@ -1,4 +1,5 @@
-package com.github.locxter; /******************************************************************************
+package com.github.locxter;
+/******************************************************************************
  *  Compilation:  javac StdIn.java
  *  Execution:    java StdIn   (interactive test of basic functionality)
  *  Dependencies: none
