@@ -1,12 +1,9 @@
 /******************************  TreeToolsTest.java  **************************/
 package com.github.locxter;
 
-import com.github.locxter.StdOut;
-import com.github.locxter.LinkedTree;
-
 /**
-* Test fuer die Klasse TreeTools
-*/
+ * Test fuer die Klasse TreeTools
+ */
 
 public class TreeToolsTest {
 
@@ -22,37 +19,39 @@ public class TreeToolsTest {
         LinkedTree y = new LinkedTree(new Character('Y'));
         LinkedTree n = new LinkedTree(x, new Character('-'), y);
         LinkedTree d = new LinkedTree(p, new Character('/'), n);
-        
-        
+
+
         // Testet treeHeight(), anzahlKnoten(), 
         // printTreeInorderWithParenthesis(), printTreeLevelorder()
-        
-        //    TreeTools.printTree(d); 
-        //    
-        //    StdOut.println("Baumhoehe laut Methode (sollte 4 sein): " 
-        //                   + TreeTools.treeHeight(d));
-        //    
-        //    StdOut.println("Anzahl Knoten laut Methode (sollte 9 sein): "
-        //                   + TreeTools.anzahlKnoten(d));
-        //    
-        //    StdOut.print("Ausdruck mit Klammerung: ");
-        //    TreeTools.printTreeInorderWithParenthesis(d);
-        //    StdOut.println();
-        //    
-        //    StdOut.print("Baum ebenenweise: ");
-        //    TreeTools.printTreeLevelorder(d);
-        //    StdOut.println();
 
-        
+        TreeTools.printTree(d);
+
+        StdOut.println("Baumhoehe laut Methode (sollte 4 sein): " + TreeTools.treeHeight(d));
+
+        StdOut.println("Anzahl Knoten laut Methode (sollte 9 sein): " + TreeTools.anzahlKnoten(d));
+
+        StdOut.print("Ausdruck ohne Klammerung: ");
+        TreeTools.printTreeInorder(d);
+        StdOut.println();
+
+        StdOut.print("Ausdruck mit Klammerung: ");
+        TreeTools.printTreeInorderWithParenthesis(d);
+        StdOut.println();
+
+        StdOut.print("Baum ebenenweise: ");
+        TreeTools.printTreeLevelorder(d);
+        StdOut.println();
+
+
         // Testet searchTreeSort()
-        
-        //    StdOut.println("Sortiere  6194283");
-        //    int[] a = {6,1,9,4,2,8,3};
-        //    a = TreeTools.searchTreeSort(a);
-        //    StdOut.print("Ergebnis (sollte 1234689 sein): ");
-        //    for(int i = 0; i < a.length; i++) 
-        //      StdOut.print(a[i]);
-        
+
+        StdOut.println("Sortiere  6194283");
+        int[] arr = {6, 1, 9, 4, 2, 8, 3};
+        arr = TreeTools.searchTreeSort(arr);
+        StdOut.print("Ergebnis (sollte 1234689 sein): ");
+        for (int i = 0; i < arr.length; i++)
+            StdOut.print(arr[i]);
+
         StdOut.println();
     }
 }
