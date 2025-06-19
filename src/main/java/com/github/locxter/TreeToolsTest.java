@@ -3,7 +3,6 @@ package com.github.locxter;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintStream;
 
 /**
  * Test fuer die Klasse TreeTools
@@ -11,7 +10,7 @@ import java.io.PrintStream;
 
 public class TreeToolsTest {
 
-    public static void main(String[] argv) throws IOException {
+    public static void main(String[] argv){
 
         // Erzeuge einen Test-Baum
         LinkedTree a = new LinkedTree(new Character('A'));
@@ -64,13 +63,13 @@ public class TreeToolsTest {
         //Aufgabe b)
 
         // Einlesen der Anzahl Suchbaeume und Knoten durch User
-        StdOut.println("Bitte gewuenschte Anzahl Knoten pro Baum eingeben");
+        StdOut.printf("%nBitte gewuenschte Anzahl Knoten pro Baum eingeben:%n");
         int numberOfNodesPerTree = StdIn.readInt();
 
-        StdOut.println("Bitte gewuenschte Anzahl Baeume eingeben");
+        StdOut.printf("%nBitte gewuenschte Anzahl Baeume eingeben:%n");
         int numberOfRandomTrees = StdIn.readInt();
 
-        StdOut.println("Erzeuge " + numberOfRandomTrees + " Suchbaeume mit je " + numberOfNodesPerTree + " Knoten");
+        StdOut.printf("%nErzeuge " + numberOfRandomTrees + " Suchbaeume mit je " + numberOfNodesPerTree + " Knoten.%n%n");
 
 
         // Gesamthöhe der Baeume bestimmen
@@ -110,10 +109,22 @@ public class TreeToolsTest {
         output.append(String.format("%nDurchschnittliche Hoehe: %.2f (entspricht %.2f * log2(n))", averageHeight, c));
 
         // Output-String in Datei und StdOut schreiben
-        FileWriter writer = new FileWriter("Aufgabe_b_output.txt");
-        writer.write(output.toString());
-        writer.close();
-        StdOut.println(output);
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter("Aufgabe_b_output.txt");
+            writer.write(output.toString());
+            StdOut.println(output);
+        } catch (IOException e) {
+            System.err.println("Fehler beim Schreiben der Datei: " + e.getMessage());
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    System.err.println("Fehler beim Schließen der Datei: " + e.getMessage());
+                }
+            }
+        }
     }
 }
 

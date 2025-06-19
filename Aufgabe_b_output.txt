@@ -1,12 +1,12 @@
-Hoehe Suchbaum 1: 24
+Hoehe Suchbaum 1: 21
 Hoehe Suchbaum 2: 21
 Hoehe Suchbaum 3: 22
-Hoehe Suchbaum 4: 21
+Hoehe Suchbaum 4: 22
 Hoehe Suchbaum 5: 20
-Hoehe Suchbaum 6: 23
-Hoehe Suchbaum 7: 21
-Hoehe Suchbaum 8: 20
-Hoehe Suchbaum 9: 25
-Hoehe Suchbaum 10: 23
+Hoehe Suchbaum 6: 21
+Hoehe Suchbaum 7: 20
+Hoehe Suchbaum 8: 24
+Hoehe Suchbaum 9: 19
+Hoehe Suchbaum 10: 21
 
-Durchschnittliche Hoehe: 22,00 (entspricht 2,21 * log2(n))
+Durchschnittliche Hoehe: 21,10 (entspricht 2,12 * log2(n))
