@@ -1,13 +1,16 @@
 /******************************  TreeToolsTest.java  **************************/
 package com.github.locxter;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Test fuer die Klasse TreeTools
  */
 
 public class TreeToolsTest {
 
-    public static void main(String[] argv) {
+    public static void main(String[] argv){
 
         // Erzeuge einen Test-Baum
         LinkedTree a = new LinkedTree(new Character('A'));
@@ -53,6 +56,76 @@ public class TreeToolsTest {
             StdOut.print(arr[i]);
 
         StdOut.println();
+
+
+
+        //----------------------------------------------
+        //Aufgabe b)
+
+        // Einlesen der Anzahl Suchbaeume und Knoten durch User
+        StdOut.printf("%nBitte gewuenschte Anzahl Knoten pro Baum eingeben:%n");
+        int numberOfNodesPerTree = StdIn.readInt();
+
+        StdOut.printf("%nBitte gewuenschte Anzahl Baeume eingeben:%n");
+        int numberOfRandomTrees = StdIn.readInt();
+        StdOut.println();
+
+        // Output-String
+        StringBuilder output = new StringBuilder();
+
+        output.append("Erzeuge ").append(numberOfRandomTrees).append(" Suchbaeume mit je ").append(numberOfNodesPerTree).append(" Knoten.\n\n");
+
+
+        // Gesamthöhe der Baeume bestimmen
+        int collectiveHeight = 0;
+
+        // Baueme mit Zufälligen Werten erstellen
+        for (int i = 1; i <= numberOfRandomTrees; i++) {
+
+            // Zufällige Zahlen erzeugen
+            int[] values = new int[numberOfNodesPerTree];
+            for (int j = 0; j < numberOfNodesPerTree; j++) {
+                values[j] = j;
+            }
+            // Zahlen zufällig anordnen
+            StdRandom.shuffle(values);
+
+            // Erstelle Suchbaum mit diesen Werten
+
+            SearchTree tree = new SearchTree();
+            for (int val : values) {
+                tree.insert(val);
+            }
+
+            // Hoehe des aktuellen Baums bestimmen
+            int height = TreeTools.treeHeight(tree);
+            collectiveHeight += height;
+            output.append("Hoehe Suchbaum ").append(i).append(": ").append(height).append("\n");
+        }
+
+        // Durchschnitt berechnen
+        double averageHeight = (double) collectiveHeight / numberOfRandomTrees;
+        double c = averageHeight / (Math.log(numberOfNodesPerTree) / Math.log(2));
+
+        output.append(String.format("%nDurchschnittliche Hoehe: %.2f (entspricht %.2f * log2(n))", averageHeight, c));
+
+        // Output-String in Datei und StdOut schreiben
+        StdOut.println(output);
+        FileWriter writer = null;
+        try {
+            writer = new FileWriter("Aufgabe_b_output.txt");
+            writer.write(output.toString());
+        } catch (IOException e) {
+            System.err.println("Fehler beim Schreiben der Datei: " + e.getMessage());
+        } finally {
+            if (writer != null) {
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    System.err.println("Fehler beim Schließen der Datei: " + e.getMessage());
+                }
+            }
+        }
     }
 }
 

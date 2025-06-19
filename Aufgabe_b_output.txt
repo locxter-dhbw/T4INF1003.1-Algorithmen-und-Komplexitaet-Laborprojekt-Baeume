@@ -1,0 +1,14 @@
+Erzeuge 10 Suchbaeume mit je 1000 Knoten.
+
+Hoehe Suchbaum 1: 21
+Hoehe Suchbaum 2: 24
+Hoehe Suchbaum 3: 22
+Hoehe Suchbaum 4: 19
+Hoehe Suchbaum 5: 21
+Hoehe Suchbaum 6: 22
+Hoehe Suchbaum 7: 22
+Hoehe Suchbaum 8: 25
+Hoehe Suchbaum 9: 26
+Hoehe Suchbaum 10: 24
+
+Durchschnittliche Hoehe: 22,60 (entspricht 2,27 * log2(n))
