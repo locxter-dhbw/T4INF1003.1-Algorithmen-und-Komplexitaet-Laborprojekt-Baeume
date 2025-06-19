@@ -68,15 +68,16 @@ public class TreeToolsTest {
 
         StdOut.printf("%nBitte gewuenschte Anzahl Baeume eingeben:%n");
         int numberOfRandomTrees = StdIn.readInt();
+        StdOut.println();
 
-        StdOut.printf("%nErzeuge " + numberOfRandomTrees + " Suchbaeume mit je " + numberOfNodesPerTree + " Knoten.%n%n");
+        // Output-String
+        StringBuilder output = new StringBuilder();
+
+        output.append("Erzeuge ").append(numberOfRandomTrees).append(" Suchbaeume mit je ").append(numberOfNodesPerTree).append(" Knoten.\n\n");
 
 
         // Gesamthöhe der Baeume bestimmen
         int collectiveHeight = 0;
-    
-        // Output-String
-        StringBuilder output = new StringBuilder();
 
         // Baueme mit Zufälligen Werten erstellen
         for (int i = 1; i <= numberOfRandomTrees; i++) {
@@ -109,11 +110,11 @@ public class TreeToolsTest {
         output.append(String.format("%nDurchschnittliche Hoehe: %.2f (entspricht %.2f * log2(n))", averageHeight, c));
 
         // Output-String in Datei und StdOut schreiben
+        StdOut.println(output);
         FileWriter writer = null;
         try {
             writer = new FileWriter("Aufgabe_b_output.txt");
             writer.write(output.toString());
-            StdOut.println(output);
         } catch (IOException e) {
             System.err.println("Fehler beim Schreiben der Datei: " + e.getMessage());
         } finally {
